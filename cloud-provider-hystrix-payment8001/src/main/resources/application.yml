@@ -1,0 +1,17 @@
+server:
+  port: 8001
+spring:
+  application:
+    name: cloud-provider-hystrix-payment
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka/
+  instance:
+    instance-id: payment8001
+    prefer-ip-address: true
+
+
+#哪些情况会触发降级：1、程序运行异常、2、超时、3、服务熔断触发服务降级、4、线程池/信号量打满才会导致服务降级
