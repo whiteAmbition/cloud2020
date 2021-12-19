@@ -10,7 +10,11 @@ spring:
     url: jdbc:mysql://localhost:3306/db2019?useUnicode=true&characterEncoding=utf-8&useSSL=false
     username: root
     password: root
-
+  zipkin:
+    base-url: http://127.0.0.1:9411/ #zipkin-server的地址，默认端口9411
+  sleuth:
+    sampler:
+      probability: 1  #采样率值介于0到1之间，1则表示全部采集
 mybatis:
   mapper-locations: classpath:mapper/*.xml
   type-aliases-package: com.atguigu.springcloud.entities

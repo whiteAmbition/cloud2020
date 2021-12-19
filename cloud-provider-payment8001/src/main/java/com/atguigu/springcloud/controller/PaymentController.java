@@ -54,6 +54,11 @@ public class PaymentController {
         }
     }
 
+    @GetMapping("/payment/lb")
+    public String getPaymentLB(){
+        return serverPort;
+    }
+
     @GetMapping("/payment/discovery")
     public Object discovery(){
         List<String> services = discoveryClient.getServices();//["cloud-payment-service","cloud-order-service"]
@@ -67,6 +72,11 @@ public class PaymentController {
 //            log.info("=======instance:"+"\t"+instance.getInstanceId()+"\t"+instance.getPort()+"\t"+instance.getUri());
 //        }
         return this.discoveryClient;
+    }
+
+    @GetMapping("/payment/zipkin")
+    public String paymentZipkin(){
+        return "hi,i'm paymentZipkin server fallback,welcome to zipkin，(●ˇ∀ˇ●) ";
     }
 
 }

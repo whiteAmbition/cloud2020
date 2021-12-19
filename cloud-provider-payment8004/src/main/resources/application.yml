@@ -7,3 +7,7 @@ spring:
     zookeeper:
       discovery:
           connect-string: 127.0.0.1:2181
+#com:
+#  kd:
+#    config:
+#      enabled: true

@@ -1,0 +1,39 @@
+server:
+  port: 8802
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka/
+  instance:
+    lease-renewal-interval-in-seconds: 2
+    lease-expiration-duration-in-seconds: 5
+    instance-id: stream-consumer8802
+    prefer-ip-address: true
+spring:
+  application:
+    name: cloud-stream-consumer
+  rabbitmq:
+    #host: 192.168.20.220
+    host: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
+  cloud:
+    stream:
+      binders: #在此处配置要绑定的rabbitmq的服务信息；
+        defaultRabbit: #表示定义的名称，用于binding整合
+          type: rabbit  #消息组件类型
+          environment: #设置rabbitmq的相关的环境配置
+            spring:
+              rabbitmq:
+               # host: 192.168.20.220
+                host: 127.0.0.1
+                port: 5672
+                username: guest
+                password: guest
+      bindings:
+        input: #这个名字是一个通道的名称
+          destination: studyExchange  #表示要使用的Exchange名称定义
+          content-type: appliaction/json
+          binder: defaultRabbit
+          group: atguiguA
