@@ -1,0 +1,38 @@
+server:
+  port: 3344
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka/
+  instance:
+    instance-id: config-center3344
+    prefer-ip-address: true
+
+spring:
+  application:
+    name: cloud-config-center
+  cloud:
+    config:
+      label: master
+      name: config
+      profile: dev
+      server:
+        git:
+          uri: git@github.com:whiteAmbition/spring-cloud-config.git
+          search-paths: spring-cloud-config
+  rabbitmq:  #rabbitmq相关配置
+    #host: 192.168.20.220
+    host: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
+#rabbitmq相关配置，暴露bus刷新配置的端点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "bus-refresh"
+
+
+
