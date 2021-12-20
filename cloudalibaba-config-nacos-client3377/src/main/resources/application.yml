@@ -1,0 +1,4 @@
+spring:
+  profiles:
+    #active: info #使用group区分dev和test
+    active: dev #dev表示开发环境，test表示测试环境
